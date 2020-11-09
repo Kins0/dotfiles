@@ -1,0 +1,11 @@
+alias ll='ls -lh'
+alias la='ls -lah'
+alias i3conf='$EDITOR ~/.config/i3/config'
+alias polyconf='$EDITOR ~/.config/polybar/config'
+alias vimconf='$EDITOR ~/.$EDITORrc'
+alias awesomeconf='$EDITOR ~/.config/awesome/rc.lua'
+alias dwmconf='$EDITOR ~/suckless/dwm/config.h'
+
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+
