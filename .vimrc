@@ -30,36 +30,7 @@ filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
-
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  if has('persistent_undo')
-    set undofile	" keep an undo file (undo changes after closing)
-  endif
-endif
-
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  augroup END
-
-else
-
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
+syntax on
 
 set bg=light
 set nocompatible
@@ -67,6 +38,12 @@ set mouse=a
 set ttymouse=sgr
 set nohlsearch
 set number relativenumber 
+set smartindent
+set smartcase
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
 
 " Tab Settings
 set tabstop=4
@@ -74,16 +51,32 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-" Auto load Colorizer
-:let g:colorizer_auto_color = 1
 
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-" The ! means the package won't be loaded right away but when plugins are
-" loaded during initialization.
-if has('syntax') && has('eval')
-  packadd! matchit
+if executable('rg')
+    let g:rg_derive_root='true'
 endif
 
+let mapleader = " "
+
+nnoremap <leader>q :q<CR>
+
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>t :NERDTree <bar> :vertical resize 50<CR>
+
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>bp :bp<CR>
+
+nnoremap <silent> <leader>+ :vertical resize +5<CR>
+nnoremap <silent> <leader>- :vertical resize -5<CR>
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+
+" Auto load Colorizer
+:let g:colorizer_auto_filetype='css,html'

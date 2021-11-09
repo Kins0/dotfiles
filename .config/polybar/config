@@ -5,19 +5,39 @@ background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = ${xrdb:foreground}
 foreground-alt = #555
-module-background = #c5c8c6
+;module-background = #c5c8c6
+module-background = #333
 module-date = #cc6666
 module-volume = #f0c674
 ; primary = #039919
 ;primary = #056d0f
-primary = #b5bd68
+;primary = #b5bd68
+primary = #156835
 secondary = #e60053
 alert = #bd2c40
 
+[settings]
+format-foreground = ${colors.foreground}
+format-background = ${colors.module-background}
+format-underline = ${colors.primary}
+;format-padding = 1
+format-prefix-foreground = ${colors.foreground}
+format-prefix-background = ${colors.module-background}
+format-prefix-underline = ${colors.primary}
+;format-prefix-padding = 1
+label-padding = 1
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
+
 [bar/bar1]
-monitor = DP-0
+monitor = DP-2
 width = 100%
-height = 22
+height = 28
 offset-x = 0
 offset-y = 0
 radius = 0.0
@@ -29,7 +49,7 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 6
+border-size = 0
 border-color = ${colors.background}
 
 ;padding-left = 0
@@ -37,27 +57,28 @@ border-color = ${colors.background}
 ;padding = 10px
 
 module-margin-left = 1
-module-margin-right = 1
+;module-margin-right = 1
 
 ;font-0 = fixed:pixelsize=10;1
 font-0 = DejaVu Sans Mono:style=Book:pixelsize=10;1
-font-1 = Font Awesome 5 Free:style=Solid:pixelsize=10:antialias=false;3
-font-2 = Font Awesome 5 Brands Regulara:style=Regular:pixelsize=10:antialias=false;3
+font-1 = Font Awesome 5 Free:style=Solid:scale=10:antialias=false;3
+font-2 = Font Awesome 5 Brands Regular:style=Regular:scale=10:antialias=false;3
+font-3 = Noto Color Emoji:style=Regular:scale=10:alias=false;3
 
 modules-left = i3 
 modules-center = xwindow
 modules-right = pulseaudio date time
 
-;tray-position = right
-;tray-padding = 2
-;tray-background = ${colors.background}
+tray-position = right
+tray-padding = 2
+tray-background = ${colors.background}
 
 ;wm-restack = i3
 
 ;override-redirect = true
 
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
+scroll-up = i3wm-wsprev
+scroll-down = i3wm-wsnext
 
 cursor-click = default
 cursor-scroll = default
@@ -66,10 +87,13 @@ locale = de_DE.UTF-8
 
 [bar/bar2]
 inherit = bar/bar1
-monitor = DP-2
+monitor = DP-0
+tray-position = 0
 
 [module/xwindow]
 type = internal/xwindow
+format-underline = 
+format-background = 
 label = %title:0:30:...%
 
 [module/xkeyboard]
@@ -135,27 +159,29 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${colors.primary}
-label-focused-foreground = ${colors.background}
-label-focused-underline= 
+label-focused-background = ${colors.module-background}
+label-focused-foreground = ${colors.foreground}
+label-focused-underline = ${colors.primary}
 label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-padding = 1
-label-unfocused-background = ${colors.module-background}
-label-unfocused-foreground = ${colors.background}
+label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-underline = ${colors.background} 
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
-label-visible-background = ${colors.primary}
-label-visible-foreground = ${colors.background}
-label-visible-underline = 
+label-visible-background = ${colors.module-background}
+label-visible-foreground = ${colors.foreground}
+label-visible-underline = ${colors.primary}
 label-visible-padding = 1
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
 label-urgent-background = ${colors.alert}
+label-urgent-underline = ${colors.alert}
 label-urgent-padding = 1
 
 ; Separator in between workspaces
@@ -259,16 +285,17 @@ interval = 1
 date = "%a %d-%m-%Y"
 date-alt = 
 
-format-prefix = 
-format-prefix-foreground = ${colors.background}
-format-prefix-background = ${colors.module-date}
-format-prefix-padding = 1
+format-prefix = " 📅"
+;format-prefix-foreground = ${colors.background}
+;format-prefix-background = ${colors.module-date}
+;format-prefix-padding = 1
 ;format-underline = ${colors.primary}
 
 label = %date%
 label-padding = 1
 label-background = ${colors.module-background}
-label-foreground = ${colors.background}
+label-foreground = ${colors.foreground}
+label-underline = ${colors.primary}
 
 [module/time]
 inherit = module/date
@@ -276,8 +303,8 @@ inherit = module/date
 time = %H:%M:%S
 time-alt =
 
-format-prefix = 
-format-prefix-background = ${colors.primary}
+format-prefix = " ⏲"
+;format-prefix-background = ${colors.primary}
 
 label = %time%
 
@@ -286,19 +313,22 @@ type = internal/pulseaudio
 
 ;format-volume = <label-volume> <bar-volume>
 format-volume = <label-volume>
+format-padding = 0
 
-format-volume-prefix = 
-format-volume-prefix-foreground = ${colors.background}
-format-volume-prefix-background = ${colors.module-volume}
-format-volume-prefix-padding = 1
+;format-volume-prefix = 
+;format-volume-prefix-foreground = ${colors.background}
+;format-volume-prefix-background = ${colors.module-volume}
+;format-volume-prefix-padding = 1
 
-label-volume = %percentage%%
-label-volume-foreground = ${colors.background}
+label-volume = 🔊 %percentage%%
+label-volume-foreground = ${colors.foreground}
 label-volume-background = ${colors.module-background}
+label-volume-underline = ${colors.primary}
 label-volume-padding = 1
 
 label-muted = 🔇 muted
 label-muted-foreground = #666
+label-muted-padding = 1
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -426,16 +456,3 @@ menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
-
-; vim:ft=dosini

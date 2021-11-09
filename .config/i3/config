@@ -248,4 +248,5 @@ bindsym $meh+f exec $BROWSER
 bindsym $meh+d exec discord
 bindsym $hyper+l exec lutris
 bindsym $hyper+p exec sh ~/.scripts/picom_toggle.sh
+bindsym $meh+r exec gamemoderun rollback
 
