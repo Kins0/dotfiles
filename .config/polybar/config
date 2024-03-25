@@ -35,7 +35,7 @@ margin-bottom = 5
 ; vim:ft=dosini
 
 [bar/bar1]
-monitor = DP-2
+monitor = DisplayPort-0
 width = 100%
 height = 28
 offset-x = 0
@@ -87,8 +87,8 @@ locale = de_DE.UTF-8
 
 [bar/bar2]
 inherit = bar/bar1
-monitor = DP-0
-tray-position = 0
+monitor = DisplayPort-1
+tray-position = right
 
 [module/xwindow]
 type = internal/xwindow

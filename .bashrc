@@ -11,3 +11,4 @@ alias ll='ls -la --color=auto'
 alias vpn='sudo openvpn /etc/openvpn/hdm_mi_stud.ovpn'
 
 neofetch
+. "$HOME/.cargo/env"

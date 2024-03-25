@@ -3,7 +3,7 @@ set $hyper Mod1+Ctrl+Shift+Mod4
 set $meh Mod1+Ctrl+Shift
 
 # Mouse hover controls focus
-focus_follows_mouse no
+focus_follows_mouse yes
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -12,7 +12,7 @@ floating_modifier $mod
 bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -fn "monospace:size=10" -nb "#222222" -nf "#bbbbbb" -sb "#156835" -sf "#eeeeee"
@@ -95,12 +95,13 @@ bindsym $mod+0 workspace $ws10
 assign [class="firefox"] $ws1
 assign [class="Brave-browser"] $ws1
 assign [class="discord"] $ws3
-assign [class="origin.exe"] $ws9
+assign [instance="origin.exe"] $ws9
 assign [class="Wine"] $ws9
-assign [class="Steam"] $ws9
+assign [class="steam"] $ws9
 
 for_window [class="Godot"] floating enable
 for_window [instance="origin.exe"] floating enable
+# for_window [class="Steam"] floating enable
 
 
 # move focused container to workspace
@@ -227,6 +228,13 @@ bindsym $mod+p exec scrot -s
 
 # Autostart
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec picom -b 
+exec redshift -l 48.8:9.01667 -t 5500:3500 
+exec dunst
+exec udiskie
+exec --no-startup-id xrandr --output DisplayPort-0 --mode 2560x1440 --pos 1920x0 --rate 165.00 --set TearFree on --output DisplayPort-1 --mode 1920x1080 --rate 239.76 --pos 0x180 --primary --set TearFree on &
+#exec --no-startup-id xrandr --output DisplayPort-0 --mode 2560x1440 --pos 1920x0 --rate 165.00 --set TearFree on --output DisplayPort-1 --mode 1920x1080 --rate 239.76 --pos 0x180 --primary --set TearFree on --output HDMI-A-0 --mode 1920x1080 --pos 4480x0 --rate 120.00 --set TearFree on --same-as DisplayPort-1 &
+exec_always feh --bg-scale --randomize ~/Pictures/Wallpapers/* 
 
 bindsym $mod+shift+x exec i3lock --color "$bg-color"
 

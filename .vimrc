@@ -10,18 +10,26 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'rust-lang/rust.vim'
+
 Plugin 'preservim/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 Plugin 'mattn/emmet-vim'
 Plugin 'lervag/vimtex'
 Plugin 'vim-airline/vim-airline'
 " Plugin 'powerline/powerline'
 " Plugin 'valloric/youcompleteme'
 " Plugin 'francoiscabrol/ranger.vim'
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/fzf'
 Plugin 'neoclide/coc.nvim'
 Plugin 'habamax/vim-godot'
+" Plugin 'evanleck/vim-svelte'
 Plugin 'chrisbra/colorizer'
+Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
 " All of your Plugins must be added before the following line
@@ -32,10 +40,14 @@ filetype plugin indent on    " required
 
 syntax on
 
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_general_viewer = 'zathura'
+
+
 set bg=light
 set nocompatible
 set mouse=a
-set ttymouse=sgr
+" set ttymouse=sgr
 set nohlsearch
 set number relativenumber 
 set smartindent
@@ -46,9 +58,9 @@ set undodir=~/.vim/undodir
 set undofile
 
 " Tab Settings
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 
 
@@ -68,8 +80,12 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>t :NERDTree <bar> :vertical resize 50<CR>
 
-nnoremap <leader>bn :bn<CR>
-nnoremap <leader>bp :bp<CR>
+" nnoremap <leader>bn :bn<CR>
+" nnoremap <leader>bp :bp<CR>
+nnoremap <leader>b :buffers<CR>
+
+nnoremap <leader>hs :split<CR>
+nnoremap <leader>vs :vs<CR>
 
 nnoremap <silent> <leader>+ :vertical resize +5<CR>
 nnoremap <silent> <leader>- :vertical resize -5<CR>

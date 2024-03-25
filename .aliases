@@ -6,6 +6,9 @@ alias vimconf='$EDITOR ~/.vimrc'
 alias awesomeconf='$EDITOR ~/.config/awesome/rc.lua'
 alias dwmconf='$EDITOR ~/suckless/dwm/config.h'
 alias vps='ssh kins0@46.243.90.164'
+alias vim='nvim'
+alias hx='helix'
+alias pi='ssh kins0@192.168.178.130'
 
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
