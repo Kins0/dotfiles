@@ -78,6 +78,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
     git
     vi-mode
+    sudo
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -114,4 +115,4 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 source $HOME/.aliases
 
-neofetch
+~/.local/share/bin/random_pokemon.sh
