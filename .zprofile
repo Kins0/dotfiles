@@ -9,6 +9,6 @@ export EDITOR='nvim'
 export TERMINAL='alacritty'
 export FILE='ranger'
 
-if uwsm check may-start && uwsm select; then
-	exec uwsm start hyprland.desktop
-fi
+#if uwsm check may-start && uwsm select; then
+#	exec uwsm start hyprland.desktop
+#fi
